@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+inventory-app,inventory.controller,ProductController,0,46,0,0,0,14,0,6,0,6
+inventory-app,inventory.service,ProductService,0,64,0,0,0,15,0,7,0,7
+inventory-app,inventory.model,Product,19,128,8,8,6,32,9,14,1,14
+inventory-app,inventory,InventoryApplication,5,3,0,0,2,1,1,1,1,1

@@ -1,0 +1,136 @@
+# Compiled class file
+*.class
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+
+# ============================================
+# Spring-Core-Specific Files ignored!!
+# ============================================
+
+# ============================================
+# IDE-Specific Files
+# ============================================
+
+# Eclipse IDE files
+.classpath          # Eclipse classpath file, contains project-specific build path settings
+.project           # Eclipse project file, contains project metadata
+.settings/         # Eclipse workspace settings, contains IDE-specific preferences
+.metadata/         # Eclipse workspace metadata, contains cached data and history
+*.prefs            # Eclipse preference files, contains user-specific settings
+*.jsdtscope        # Eclipse JavaScript development tools scope files
+*.tmp              # Temporary files created by Eclipse
+*.bak              # Backup files created by Eclipse
+*.patch            # Patch files created by Eclipse
+*.launch           # Eclipse launch configurations, specific to local setup
+bin/               # Eclipse build output directory, contains compiled classes
+
+# IntelliJ IDEA files
+.idea/             # IntelliJ IDEA project settings, contains IDE-specific metadata
+*.iml              # IntelliJ IDEA module file, contains module-specific settings
+*.ipr              # IntelliJ IDEA project file, contains project-specific settings
+*.iws              # IntelliJ IDEA workspace file, contains workspace-specific settings
+*.ids              # IntelliJ IDEA temporary files
+*.orig             # Backup files created by IntelliJ IDEA during file merges
+
+# VS Code files
+.vscode/           # VS Code workspace settings, contains IDE-specific configurations
+*.code-workspace   # VS Code multi-root workspace file
+
+# NetBeans files
+nbproject/         # NetBeans project metadata, contains project-specific settings
+nbactions.xml      # NetBeans build actions file
+nb-configuration.xml # NetBeans configuration file
+
+# ============================================
+# Maven Build Files
+# ============================================
+target/            # Maven build output directory, contains compiled classes, JARs, etc.
+/target/
+pom.xml.versionsBackup # Backup file created by Maven during version updates
+pom.xml.releaseBackup # Backup file created by Maven during releases
+release.properties # File created by Maven during release builds
+dependency-reduced-pom.xml # Temporary file created by the Maven Shade Plugin
+
+# ============================================
+# Build and Distribution Files
+# ============================================
+build/             # Build output directory (used by Gradle or other build tools)
+out/               # Build output directory (used by IntelliJ IDEA)
+dist/              # Distribution directory, contains packaged applications
+*.jar              # Java archive files, generated during the build process
+*.war              # Web application archive files, generated during the build process
+*.ear              # Enterprise archive files, generated during the build process
+
+# ============================================
+# Logs and Temporary Files
+# ============================================
+logs/              # Directory containing log files
+*.swp              # Swap files created by text editors (e.g., Vim)
+*.swo              # Swap files created by text editors (e.g., Vim)
+*.bak              # Backup files created by text editors or IDEs
+*.tmp              # Temporary files created by the system or applications
+*.patch            # Patch files created during development
+
+# ============================================
+# System-Specific Files
+# ============================================
+.DS_Store          # macOS folder metadata file
+Thumbs.db          # Windows thumbnail cache file
+
+# ============================================
+# Environment Files (Sensitive Data)
+# ============================================
+#.env               # Environment file, contains sensitive data (e.g., API keys, passwords)
+#.env.local         # Local environment file, contains environment-specific sensitive data
+
+# ============================================
+# Test Output
+# ============================================
+test-output/       # Directory containing test output (e.g., Surefire reports)
+surefire-reports/  # Directory containing Surefire test reports
+failsafe-reports/  # Directory containing Failsafe test reports
+
+# ============================================
+# Dependency Files
+# ============================================
+**/dependency-reduced-pom.xml # Temporary file created by the Maven Shade Plugin
+
+# ============================================
+# Other Files
+# ============================================
+*.class            # Compiled Java class files
+*.exe              # Windows executable files
+*.dll              # Windows dynamic link library files
+*.so               # Linux shared object files
+*.o                # Compiled object files (e.g., from C/C++)
+*.a                # Static library files (e.g., from C/C++)
+*.lib              # Library files (e.g., from C/C++)
+*.out              # Output files from compiled programs
+*.suo              # Visual Studio user options file
+*.user             # Visual Studio user-specific settings file
+*.cache            # Cache files created by various tools
+*.lock             # Lock files created by various tools
+*.pid              # Process ID files created by applications
+*.seed             # Seed files created by applications
+*.pid.lock         # Process ID lock files created by applications
+
+# ============================================
+# Spring-Core-Specific Files ignored!!
+# ============================================

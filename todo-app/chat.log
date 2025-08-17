@@ -1,0 +1,209 @@
+# Prompt to Generate Full Spring Boot + Hibernate + MySQL Todo API Project
+
+Generate a complete runnable Java project using **Spring Boot**, **Hibernate (JPA)**, and **MySQL** that implements a RESTful API for a simple Todo list application.
+
+## Requirements
+
+1. **Entity**  
+   - Class `TodoItem` with fields:  
+     - `Long id` (auto-generated, primary key)  
+     - `String title` (not null)  
+     - `String description` (optional)  
+
+2. **Endpoints (CRUD)**  
+   - `POST /api/todos` → create a new todo item.  
+   - `GET /api/todos` → retrieve all todo items.  
+   - `GET /api/todos/{id}` → retrieve a todo item by ID.  
+   - `PUT /api/todos/{id}` → update a todo item by ID.  
+   - `DELETE /api/todos/{id}` → delete a todo item by ID.  
+
+3. **Persistence**  
+   - Use Hibernate/JPA for ORM.  
+   - Connect to a MySQL database.  
+   - Include example `application.properties` with MySQL connection settings:  
+     ```properties
+     spring.datasource.url=jdbc:mysql://localhost:3306/tododb
+     spring.datasource.username=root
+     spring.datasource.password=yourpassword
+     spring.jpa.hibernate.ddl-auto=update
+     spring.jpa.show-sql=true
+     spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+     ```
+
+4. **Structure**  
+   - `entity` package → contains `TodoItem.java`  
+   - `repository` package → contains `TodoRepository.java` (extends `JpaRepository`)  
+   - `service` package → contains `TodoService.java` with business logic.  
+   - `controller` package → contains `TodoController.java` with REST endpoints.  
+
+5. **Project configuration**  
+   - Provide a `pom.xml` including dependencies for:  
+     - Spring Boot Starter Web  
+     - Spring Boot Starter Data JPA  
+     - MySQL Connector/J  
+     - Spring Boot DevTools  
+   - Make the project **Maven-based**.  
+
+6. **Output format**  
+   - Show the full `pom.xml`.  
+   - Show the complete source code for each class, organized by package.  
+   - Show `application.properties`.  
+   - Provide **instructions to build and run** the project using Maven (`mvn spring-boot:run`).  
+
+**Deliver the code so I can copy, compile, and run immediately** without needing to modify it except for database credentials.
+
+
+Prompt 1 (Chain-of-Thought):
+*"Let's build a Spring Boot 3.2 Todo API with MySQL step by step. First, generate a Maven pom.xml with these specs:
+
+Java 17
+
+Spring Boot Starter Web
+
+Spring Data JPA
+
+MySQL Driver
+
+Lombok
+
+Validation
+
+Spring Boot DevTools
+
+Jacoco for test coverage
+Ensure the XML includes:
+
+Parent POM from spring-boot-starter-parent
+
+Proper dependency management
+
+Jacoco plugin with 80% coverage threshold"*
+
+Phase 2: Core Components
+Prompt 2 (Few-Shot Example):
+*"Create a TodoItem JPA entity class matching this example pattern but for a todo app:
+
+java
+@Entity
+@Data // Lombok
+public class Book {
+    @Id @GeneratedValue
+    private Long id;
+    @NotBlank
+    private String title;
+    private String author;
+}
+Requirements:
+
+Entity name: TodoItem
+
+Fields: id (auto-increment), title (required), description (optional)
+
+Add validation: title cannot be blank"*
+
+Phase 3: Repository Layer
+Prompt 3 (Instruction Tuning):
+*"Generate a Spring Data JPA repository interface for TodoItem with:
+
+Standard CRUD operations
+
+Method naming query: List<TodoItem> findByTitleContaining(String keyword)
+
+Add @Repository annotation
+Write this as a concise Java interface extending JpaRepository."*
+
+Phase 4: Service Layer
+Prompt 4 (Role Play):
+*"Act as a senior Spring developer. Create a TodoService class with:
+
+CRUD methods (create, read, update, delete)
+
+Proper transaction management
+
+Error handling for non-existent IDs
+
+Method signatures matching this REST contract:
+
+create(TodoItem): TodoItem
+
+getById(Long): Optional<TodoItem>
+
+getAll(): List<TodoItem>
+
+update(Long, TodoItem): TodoItem
+
+delete(Long): void"*
+
+Phase 5: REST Controller
+Prompt 5 (Template-Based):
+*"Generate a TodoController with REST endpoints using this template:
+
+text
+[Method] [Path] : [Description]
+POST   /api/todos    : Create new todo  
+GET    /api/todos    : List all todos  
+GET    /api/todos/{id} : Get todo by ID  
+PUT    /api/todos/{id} : Update todo  
+DELETE /api/todos/{id} : Delete todo
+Requirements:
+
+Use @RestController
+
+Return proper HTTP status codes:
+
+201 for created
+
+404 for not found
+
+Add input validation"*
+
+Phase 6: Testing
+Prompt 6 (Step-by-Step Decomposition):
+*"Let's create tests systematically:
+
+First generate a TodoItemTest covering:
+
+equals()/hashCode() contract
+
+toString() format verification
+
+Then make TodoRepositoryTest with:
+
+@DataJpaTest
+
+Test cases for save/find/delete
+
+H2 in-memory DB config
+
+Next create TodoServiceTest with:
+
+@ExtendWith(MockitoExtension.class)
+
+Mock repository layer
+
+Test all business logic
+
+Finally write TodoControllerTest with:
+
+@WebMvcTest
+
+MockMvc requests
+
+JSON payload verification"*
+
+Phase 7: Integration & Deployment
+Prompt 7 (Constraint-Based):
+*"Generate an integration test class with:
+
+@SpringBootTest
+
+TestRestTemplate
+
+Test cases for:
+
+POST → GET sequence
+
+Error scenario: GET non-existent ID
+
+Database cleanup after tests
+Configure Jacoco to exclude model classes from coverage reports."*

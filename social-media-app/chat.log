@@ -1,0 +1,77 @@
+# RESTful Social Media API Specification
+
+## Prompt:
+Design and implement a RESTful API for a basic social media platform using Spring Boot, Hibernate (JPA), and PostgreSQL.
+
+## Core Requirements
+
+### User Management
+- Users can register, update their profiles, and view other users
+- Each user has:
+  - `id`
+  - `username`
+  - `email`
+  - `password` (hashed)
+  - `creation date`
+  - `bio` (optional)
+
+### Posts
+- Users can create, view, update, and delete their own posts
+- Each post contains:
+  - `id`
+  - `title`
+  - `body`
+  - `author` (User)
+  - `creation timestamp`
+  - `last update timestamp`
+
+### Following System
+- Users can follow/unfollow other users
+- Endpoints should allow:
+  - Fetching a user's followers
+  - Fetching the users they follow
+
+### Post Likes
+- Users can like/unlike posts (a user can like a post only once)
+- Each like should track:
+  - `id`
+  - `user`
+  - `post`
+  - `timestamp`
+
+## Technical Requirements
+- Use **Spring Boot** for the backend
+- Use **Hibernate (JPA)** for ORM and database interactions
+- Use **PostgreSQL** as the database (configured via `application.properties`)
+- Implement proper **RESTful conventions** (resource naming, HTTP methods, status codes)
+- Use **DTOs** (Data Transfer Objects) for requests/responses instead of exposing entities directly
+- Include **basic validation** (e.g., non-empty posts, valid email format)
+- Secure endpoints with **JWT-based authentication** (register/login flow)
+
+## Bonus (Optional)
+- Pagination for posts (e.g., `GET /posts?page=1&size=10`)
+- Soft delete for posts (mark as deleted instead of removing from DB)
+- Basic caching (e.g., cache frequently accessed posts)
+
+## Deliverables
+1. A **GitHub repository** with the complete Spring Boot project
+2. **Postman/Insomnia collection** or **Swagger/OpenAPI docs** for testing endpoints
+3. A **README.md** explaining:
+   - DB configuration
+   - Dependencies
+   - How to run the application
+
+## Example Endpoints
+- `POST /api/auth/register` – User registration
+- `GET /api/users/{id}/posts` – Fetch posts by a user
+- `POST /api/posts/{id}/like` – Like a post
+- `GET /api/users/{id}/followers` – List followers of a user
+
+## Coding Standards
+- Focus on **clean code**
+- Implement **proper layering** (Controller → Service → Repository)
+- Include **comprehensive error handling**
+
+
+## Prompt:
+ COver test each package

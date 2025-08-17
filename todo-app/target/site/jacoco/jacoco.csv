@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+todo-app,com.todo.main.service,TodoService,26,41,0,0,4,9,3,5,3,5
+todo-app,com.todo.main,TodoApplication,5,3,0,0,2,1,1,1,1,1
+todo-app,com.todo.main.controller,TodoController,15,47,0,0,1,8,2,6,2,6
+todo-app,com.todo.main.entity,TodoItem,16,151,10,20,0,6,9,18,0,12

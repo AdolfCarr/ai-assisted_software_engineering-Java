@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">inventory-app</a> &gt; <a href="index.source.html" class="el_package">inventory.controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package inventory.controller;
+
+
+import inventory.model.Product;
+import inventory.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/products&quot;)
+public class ProductController {
+    private final ProductService productService;
+
+    @Autowired
+<span class="fc" id="L18">    public ProductController(ProductService productService) {</span>
+<span class="fc" id="L19">        this.productService = productService;</span>
+<span class="fc" id="L20">    }</span>
+
+    @GetMapping
+    public List&lt;Product&gt; getAllProducts() {
+<span class="fc" id="L24">        return productService.getAllProducts();</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Product&gt; getProductById(@PathVariable Long id) {
+<span class="fc" id="L29">        return productService.getProductById(id)</span>
+<span class="fc" id="L30">                .map(ResponseEntity::ok)</span>
+<span class="fc" id="L31">                .orElse(ResponseEntity.notFound().build());</span>
+    }
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+<span class="fc" id="L36">        return productService.saveProduct(product);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Product&gt; updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
+        try {
+<span class="fc" id="L42">            Product updatedProduct = productService.updateProduct(id, productDetails);</span>
+<span class="fc" id="L43">            return ResponseEntity.ok(updatedProduct);</span>
+<span class="fc" id="L44">        } catch (RuntimeException e) {</span>
+<span class="fc" id="L45">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteProduct(@PathVariable Long id) {
+<span class="fc" id="L51">        productService.deleteProduct(id);</span>
+<span class="fc" id="L52">        return ResponseEntity.noContent().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
