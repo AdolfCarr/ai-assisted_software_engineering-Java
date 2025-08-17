@@ -29,11 +29,11 @@ A simple social media backend API built with Spring Boot and PostgreSQL that all
 
 ## Setup & Run
 
-### 1. Start MySQL with Docker
+### 1. Start PostgreSQL with Docker
 ```bash
 
 docker pull postgres:latest
-docker run --name social_media_db -e POSTGRES_USER=root -e POSTGRES_PASSWORD=password -e POSTGRES_DB=social_media_db -p 5432:5432 -d postgres:latest
+docker run --name social_media_db -e POSTGRES_USER=root -e POSTGRES_PASSWORD=password -e POSTGRES_DB=social_media_db -p 5433:5432 -d postgres:latest
 ```
 
 Verify it's running:
@@ -49,7 +49,7 @@ Edit `src/main/resources/application.properties`:
 ```bash
 properties
 # Database Configuration
-spring.datasource.url=jdbc:postgresql://localhost:5432/social_media_db
+spring.datasource.url=jdbc:postgresql://localhost:5433/social_media_db
 spring.datasource.username=root
 spring.datasource.password=password
 
@@ -85,142 +85,150 @@ mvn spring-boot:run
 1. Setup Postman Environment
 First, create a new Postman environment called "Social Media API" with these variables:
 
-- base_url: http://localhost:8080/api
+    - base_url: http://localhost:8080/api
 
-- user_id: (leave empty - will be set after user creation)
+    - user_id: (leave empty - will be set after user creation)
 
-- post_id: (leave empty - will be set after post creation)
+    - post_id: (leave empty - will be set after post creation)
 
 2. User Endpoints
-Create User (POST)
-```text
-{{base_url}}/users
-```
-- Body (raw JSON):
 
-```json
-{
-    "username": "testuser",
-    "email": "test@example.com",
-    "password": "password123",
-    "bio": "Test user bio"
-}
-```
-What to check:
+    **Create User (POST)**
 
-- Status code 201 (Created)
+    ```text
+    {{base_url}}/users
+    ```
+    - Body (raw JSON):
 
-- Save the id from response to your user_id variable
+    ```json
+    {
+        "username": "testuser",
+        "email": "test@example.com",
+        "password": "password123",
+        "bio": "Test user bio"
+    }
+    ```
+    What to check:
 
-Get All Users (GET)
-```text
-{{base_url}}/users?page=0&size=10
-```
-What to check:
+    - Status code 201 (Created)
 
-- Status code 200 (OK)
+    - Save the id from response to your user_id variable
 
-- Paginated list of users
+    **Get All Users (GET)**
 
-Get Single User (GET)
-```text
-{{base_url}}/users/{{user_id}}
-```
-What to check:
+    ```text
+    {{base_url}}/users?page=0&size=10
+    ```
+    What to check:
 
-- Status code 200 (OK)
+    - Status code 200 (OK)
 
-- Correct user details returned
+    - Paginated list of users
+
+    **Get Single User (GET)**
+
+    ```text
+    {{base_url}}/users/{{user_id}}
+    ```
+    What to check:
+
+    - Status code 200 (OK)
+
+    - Correct user details returned
 
 3. Post Endpoints
-Create Post (POST)
-```text
-{{base_url}}/posts/user/{{user_id}}
-```
-Body (raw JSON):
 
-```json
-{
-    "title": "My First Post",
-    "body": "This is the content of my first post!"
-}
-```
-What to check:
+    **Create Post (POST)**
 
-- Status code 201 (Created)
+    ```text
+    {{base_url}}/posts/user/{{user_id}}
+    ```
+    Body (raw JSON):
 
-- Save the id from response to your post_id variable
+    ```json
+    {
+        "title": "My First Post",
+        "body": "This is the content of my first post!"
+    }
+    ```
+    What to check:
 
-Get All Posts (GET)
-```text
-{{base_url}}/posts?page=0&size=10
-```
-What to check:
+    - Status code 201 (Created)
 
-- Status code 200 (OK)
+    - Save the id from response to your post_id variable
 
-- Paginated list of posts
+    **Get All Posts (GET)**
 
-Get Single Post (GET)
-```text
-{{base_url}}/posts/{{post_id}}
-```
-What to check:
+    ```text
+    {{base_url}}/posts?page=0&size=10
+    ```
+    What to check:
 
-- Status code 200 (OK)
+    - Status code 200 (OK)
 
-- Correct post details returned
+    - Paginated list of posts
+
+    **Get Single Post (GET)**
+
+    ```text
+    {{base_url}}/posts/{{post_id}}
+    ```
+    What to check:
+
+    - Status code 200 (OK)
+
+    - Correct post details returned
 
 4. Follow Endpoints
 
-Follow User (POST)
+    **Follow User (POST)**
 
-First, create a second user (user2) and note its ID, then:
+    First, create a second user (user2) and note its ID, then:
 
-```text
-{{base_url}}/follows/{{user_id}}/follow/{user2_id}
-```
-What to check:
+    ```text
+    {{base_url}}/follows/{{user_id}}/follow/{user2_id}
+    ```
+    What to check:
 
-- Status code 200 (OK)
+    - Status code 200 (OK)
 
-- Follow relationship created
+    - Follow relationship created
 
-Get Followers (GET)
+    **Get Followers (GET)**
 
-```text
-{{base_url}}/users/{user2_id}/followers
+    ```text
+    {{base_url}}/users/{user2_id}/followers
 
-```
-What to check:
+    ```
+    What to check:
 
-- Status code 200 (OK)
+    - Status code 200 (OK)
 
-- Your test user should appear in followers list
+    - Your test user should appear in followers list
 
 5. Like Endpoints
 
-Like a Post (POST)
+    **Like a Post (POST)**
 
-```text
-{{base_url}}/likes/users/{{user_id}}/posts/{{post_id}}
-```
+    ```text
+    {{base_url}}/likes/users/{{user_id}}/posts/{{post_id}}
+    ```
 
-What to check:
+    What to check:
 
-- Status code 200 (OK)
+    - Status code 200 (OK)
 
-Get Like Count (GET)
+    **Get Like Count (GET)**
 
-```text
-{{base_url}}/likes/posts/{{post_id}}/count
-```
+    ```text
+    {{base_url}}/likes/posts/{{post_id}}/count
+    ```
 
-What to check:
+    What to check:
 
-- Status code 200 (OK)
+    - Status code 200 (OK)
 
-- Count should be 1
+    - Count should be 1
 
 **Database Management**
 Access PostgreSQL Shell in Docker:
