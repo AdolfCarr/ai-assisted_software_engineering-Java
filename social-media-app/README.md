@@ -93,6 +93,7 @@ First, create a new Postman environment called "Social Media API" with these var
 
 2. User Endpoints
 
+
     **Create User (POST)**
 
     ```text
