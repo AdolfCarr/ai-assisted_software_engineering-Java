@@ -55,8 +55,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-    </dependencies>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
 
     <build>
         <plugins>
@@ -72,7 +79,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-               <!-- JaCoCo Plugin -->
+			<!-- JaCoCo Plugin -->
         <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>

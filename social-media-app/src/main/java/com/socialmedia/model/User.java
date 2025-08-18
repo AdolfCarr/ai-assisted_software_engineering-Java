@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
 @NoArgsConstructor
@@ -32,6 +33,7 @@ public class User {
     private LocalDateTime createdAt = LocalDateTime.now();
     
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore  
     private List<Post> posts = new ArrayList<>();
     
     @OneToMany(mappedBy = "follower", cascade = CascadeType.ALL, orphanRemoval = true)
