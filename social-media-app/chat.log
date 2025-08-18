@@ -74,4 +74,4 @@ Design and implement a RESTful API for a basic social media platform using Sprin
 
 
 ## Prompt:
- COver test each package
+ Imagine you're a test software engineer and need to cover test each package, use an H2 dataBase and implement a testprofile using the H2 database.
